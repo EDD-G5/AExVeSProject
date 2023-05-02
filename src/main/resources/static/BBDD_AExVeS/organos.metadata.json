@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"1b60ca6205564bd8a9025e0de4000c2f","collectionName":"organos","type":"collection"}
