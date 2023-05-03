@@ -1,16 +1,15 @@
-package com.AExVeS.AExVeS.socios.infraestructura.config;
-
-import java.util.Collection;
-import java.util.Collections;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+package com.AExVeS.AExVeS.partner.infrastructure.config;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import java.util.Collection;
+import java.util.Collections;
 
 @EnableMongoRepositories(basePackages = "com.AExVeS.AExVeS.Infraestructura.repositories")
 @Configuration
@@ -29,7 +28,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     }
 
     @Override
-    public Collection<String> getMappingBasePackages() {
+    public Collection getMappingBasePackages() {
         return Collections.singleton("com.baeldung");
     }
 }

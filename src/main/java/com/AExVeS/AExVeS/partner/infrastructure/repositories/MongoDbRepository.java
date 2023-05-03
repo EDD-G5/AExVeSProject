@@ -1,8 +1,7 @@
-package com.AExVeS.AExVeS.socios.infraestructura.repositories;
+package com.AExVeS.AExVeS.partner.infrastructure.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import com.AExVeS.AExVeS.partner.domain.Partner;
 
-import com.AExVeS.AExVeS.socios.dominio.Socio;
-
-public interface MongoDbRepository extends MongoRepository<Socio,String> {
+public interface MongoDbRepository extends MongoRepository<Partner,String> {
 }

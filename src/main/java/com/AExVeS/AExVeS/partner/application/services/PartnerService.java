@@ -1,33 +1,33 @@
-package com.AExVeS.AExVeS.socios.aplicacion.services;
+package com.AExVeS.AExVeS.partner.application.services;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.AExVeS.AExVeS.socios.dominio.Socio;
-import com.AExVeS.AExVeS.socios.dominio.Ports.in.SociosCrudUseCases;
+import com.AExVeS.AExVeS.partner.domain.Partner;
+import com.AExVeS.AExVeS.partner.domain.Ports.in.SociosCrudUseCases;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class SocioService implements SociosCrudUseCases {
+public class PartnerService implements SociosCrudUseCases {
     private final SociosCrudUseCases sociosCrudUseCases;
     @Override
-    public Socio createSocio(Socio socio) {
+    public Partner createSocio(Partner socio) {
         return sociosCrudUseCases.createSocio(socio);
     }
 
     @Override
-    public Optional<Socio> updateSocio(Socio socio) {
+    public Optional<Partner> updateSocio(Partner socio) {
         return sociosCrudUseCases.updateSocio(socio);
     }
 
     @Override
-    public Optional<Socio> getTask(String id) {
+    public Optional<Partner> getTask(String id) {
         return sociosCrudUseCases.getTask(id);
     }
 
     @Override
-    public List<Socio> getAllSocios() {
+    public List<Partner> getAllSocios() {
         return sociosCrudUseCases.getAllSocios();
     }
 

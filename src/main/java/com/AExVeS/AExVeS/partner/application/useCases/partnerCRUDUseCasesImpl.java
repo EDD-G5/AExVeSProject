@@ -1,35 +1,35 @@
-package com.AExVeS.AExVeS.socios.aplicacion.casosUso;
+package com.AExVeS.AExVeS.partner.application.useCases;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.AExVeS.AExVeS.socios.dominio.Socio;
-import com.AExVeS.AExVeS.socios.dominio.Ports.in.SociosCrudUseCases;
-import com.AExVeS.AExVeS.socios.dominio.Ports.out.SocioRepositoryPort;
+import com.AExVeS.AExVeS.partner.domain.Partner;
+import com.AExVeS.AExVeS.partner.domain.Ports.in.SociosCrudUseCases;
+import com.AExVeS.AExVeS.partner.domain.Ports.out.SocioRepositoryPort;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class SocioCRUDUseCasesImpl  implements SociosCrudUseCases {
+public class partnerCRUDUseCasesImpl  implements SociosCrudUseCases {
     private final SocioRepositoryPort socioRepositoryPort;
 
     @Override
-    public Socio createSocio(Socio socio) {
+    public Partner createSocio(Partner socio) {
         return socioRepositoryPort.save(socio);
     }
 
     @Override
-    public Optional<Socio> updateSocio(Socio socio) {
+    public Optional<Partner> updateSocio(Partner socio) {
         return socioRepositoryPort.update(socio);
     }
 
     @Override
-    public Optional<Socio> getTask(String id) {
+    public Optional<Partner> getTask(String id) {
         return socioRepositoryPort.findById(id);
     }
 
     @Override
-    public List<Socio> getAllSocios() {
+    public List<Partner> getAllSocios() {
         return socioRepositoryPort.findAll();
     }
 

@@ -1,36 +1,35 @@
-package com.AExVeS.AExVeS.socios.infraestructura.repositories;
+package com.AExVeS.AExVeS.partner.infrastructure.repositories;
+
+import com.AExVeS.AExVeS.i.dominio.Socio;
+import com.AExVeS.AExVeS.dominio.Ports.out.SocioRepositoryPort;
+import com.AExVeS.AExVeS.Infraestructura.entities.SocioEntity;
+import lombok.AllArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.AExVeS.AExVeS.socios.dominio.Socio;
-import com.AExVeS.AExVeS.socios.dominio.Ports.out.SocioRepositoryPort;
-
-import lombok.AllArgsConstructor;
-
 @AllArgsConstructor
 public class MongoDbRepositoryAdapter implements SocioRepositoryPort {
-	
     private final MongoDbRepository mongoDbRepository;
     @Override
-    public Socio save(Socio socio) {
-        Socio socioEntity = Socio.fromDomainModel(socio);
-        Socio saved = mongoDbRepository.save(socioEntity);
+    public Partner save(Partner socio) {
+        SocioEntity socioEntity = SocioEntity.fromDomainModel(socio);
+        SocioEntity saved = mongoDbRepository.save(socioEntity);
         return saved.toDomainModel;
     }
 
     @Override
-    public Optional<Socio> findById(String id) {
+    public Optional<Partner> findById(String id) {
         return Optional.empty();
     }
 
     @Override
-    public List<Socio> findAll() {
+    public List<Partner> findAll() {
         return null;
     }
 
     @Override
-    public Optional<Socio> update(Socio socio) {
+    public Optional<Partner> update(Partner socio) {
         return Optional.empty();
     }
 
