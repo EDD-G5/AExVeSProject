@@ -1,12 +1,15 @@
 package com.AExVeS.AExVeS.representation_body.domain;
 
-import java.util.ArrayList;
-import lombok.Getter;
-import lombok.Setter;
+import java.util.List;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
 public class RepresentationBody {
-	private @Getter @Setter String _id;
-    private @Getter @Setter String nombre;
-    private @Getter @Setter ArrayList<String> ids_representantes_socios;
-    private @Getter @Setter String fecha_toma_posesion;
+    public String _id;
+    public String nombre;
+    public List<String> ids_representantes_socios;
+    public String fecha_toma_posesion;
 }

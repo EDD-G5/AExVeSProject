@@ -1,4 +1,4 @@
-package com.AExVeS.AExVeS.partner.domain.Models;
+package com.AExVeS.AExVeS.partner.infrastructure.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,8 +11,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Studies {
-    public String study_level;
-    public String carrer_speciality;
-    public String educative_institution;
+public class StudiesDto {
+	private String study_level;
+	private String carrer_speciality;
+	private String educative_institution;
+
 }

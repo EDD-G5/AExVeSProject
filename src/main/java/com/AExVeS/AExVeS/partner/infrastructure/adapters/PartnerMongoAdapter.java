@@ -41,6 +41,6 @@ public class PartnerMongoAdapter implements PartnerRepositoryPort {
 
 	public boolean deleteById(String id) {
 		partnerMongoRepository.deleteById(id);
-		return partnerMongoRepository.existsById(id);
+		return !partnerMongoRepository.existsById(id);
 	}
 }

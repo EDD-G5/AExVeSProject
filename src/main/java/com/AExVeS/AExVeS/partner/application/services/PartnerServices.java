@@ -1,5 +1,7 @@
 package com.AExVeS.AExVeS.partner.application.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +16,21 @@ public class PartnerServices {
 	@Autowired
 	private PartnerRepositoryPort partnerRepositoryPort;
 
-	public Partner getPartner(String id) {
-		Partner p = partnerRepositoryPort.findById(id);
-		System.out.printf("getPartner- PartnerServices- partner: %s\n", p.toString());
-		return p;
+	public List<Partner> getAllPartners() {
+		return partnerRepositoryPort.findAllPartners();
 	}
 
-	public Partner savePartner(Partner Partner) {
-		return partnerRepositoryPort.save(Partner);
+	public Partner getPartner(String id) {
+		return partnerRepositoryPort.findById(id);
+	}
+
+	public Partner savePartner(Partner partner) {
+		return partnerRepositoryPort.save(partner);
+
+	}
+
+	public boolean deletePartner(String id) {
+		return partnerRepositoryPort.deleteById(id);
 
 	}
 }

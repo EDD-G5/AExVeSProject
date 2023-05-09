@@ -1,16 +1,22 @@
 package com.AExVeS.AExVeS.partner.domain.Models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class PersonalData {
-    private String fecha_nacimiento;
-    private String genero;
-    private String direccion;
-    private String telefono;
-    private String email;
-    private String nacionalidad;
-    private String otros_datos;
+    public String fecha_nacimiento;
+    public String genero;
+    public String direccion;
+    public String telefono;
+    public String email;
+    public String nacionalidad;
+    public String otros_datos;
 }
