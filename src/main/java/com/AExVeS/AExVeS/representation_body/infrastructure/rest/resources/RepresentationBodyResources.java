@@ -31,38 +31,37 @@ public class RepresentationBodyResources {
 	@Autowired
 	private RepresentationBodyMapper representationBodyMapper;
 
-	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<RepresentationBodyDto>> getAll() {
-		List<RepresentationBody> ps = representationBodiesServices.getAllRepresentationBodies();
-		List<RepresentationBodyDto> psdto = new ArrayList<>();
-		
-		for(RepresentationBody p : ps) {
-			RepresentationBodyDto dto = representationBodyMapper.toDto(p);
-			psdto.add(dto);
-		}
-		
-		return new ResponseEntity<>(psdto, HttpStatus.OK);
-	}
-	@GetMapping(value = "/representation_body/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RepresentationBodyDto> getUserById(@PathVariable String id) {
-		RepresentationBodyDto dto = representationBodyMapper.toDto(representationBodiesServices.getRepresentationBody(id));
-		return new ResponseEntity<>(dto, HttpStatus.OK);
+		List<RepresentationBody> representation_bodies = representationBodiesServices.getAllRepresentationBodies();
+		List<RepresentationBodyDto> representation_bodiesdto = new ArrayList<>();
+		for (RepresentationBody p : representation_bodies)
+			representation_bodiesdto.add(representationBodyMapper.toDto(p));
+		return new ResponseEntity<>(representation_bodiesdto, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RepresentationBodyDto> saveUser(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
-		RepresentationBodyDto dto = representationBodyMapper.toDto(representationBodiesServices.saveRepresentationBody(representationBodyMapper.fromDto(RepresentationBodyDto)));
-		return new ResponseEntity<>(dto, HttpStatus.CREATED);
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RepresentationBodyDto> getRepresentationBodyById(@PathVariable String id) {
+		RepresentationBody found = representationBodiesServices.getRepresentationBody(id);
+		return new ResponseEntity<>(representationBodyMapper.toDto(found), HttpStatus.OK);
 	}
 
-	@PutMapping(value = "/representation_body", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RepresentationBodyDto> updateUser(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
-		RepresentationBodyDto RepresentationBodydto = representationBodyMapper.toDto(representationBodiesServices.saveRepresentationBody(representationBodyMapper.fromDto(RepresentationBodyDto)));
-		return new ResponseEntity<>(RepresentationBodydto, HttpStatus.OK);
+	@PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RepresentationBodyDto> saveRepresentationBody(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
+		RepresentationBody from = representationBodyMapper.fromDto(RepresentationBodyDto);
+		RepresentationBody saved = representationBodiesServices.saveRepresentationBody(from);
+		return new ResponseEntity<>(representationBodyMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Boolean> deleteUser(@PathVariable String id) {
+	@PutMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RepresentationBodyDto> updateRepresentationBody(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
+		RepresentationBody from = representationBodyMapper.fromDto(RepresentationBodyDto);
+		RepresentationBody updated = representationBodiesServices.updateRepresentationBody(from);
+		return new ResponseEntity<>(representationBodyMapper.toDto(updated), HttpStatus.OK);
+	}
+
+	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Boolean> deleteRepresentationBody(@PathVariable String id) {
 		return new ResponseEntity<>(representationBodiesServices.deleteRepresentationBodies(id), HttpStatus.OK);
 	}
 

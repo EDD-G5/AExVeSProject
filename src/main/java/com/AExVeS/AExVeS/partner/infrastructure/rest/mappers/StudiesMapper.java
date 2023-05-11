@@ -6,12 +6,9 @@ import org.mapstruct.factory.Mappers;
 import com.AExVeS.AExVeS.partner.domain.Models.Studies;
 import com.AExVeS.AExVeS.partner.infrastructure.rest.dto.StudiesDto;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface StudiesMapper {
-    
-    StudiesMapper INSTANCE = Mappers.getMapper(StudiesMapper.class);
-    
-    StudiesDto toDto(Studies studies);
-    
-    Studies toDomain(StudiesDto studiesDto);
+	StudiesDto toDto(Studies studies);
+
+	Studies toDomain(StudiesDto studiesDto);
 }

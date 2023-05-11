@@ -17,7 +17,7 @@ public class PartnerServices {
 	private PartnerRepositoryPort partnerRepositoryPort;
 
 	public List<Partner> getAllPartners() {
-		return partnerRepositoryPort.findAllPartners();
+		return partnerRepositoryPort.findAll();
 	}
 
 	public Partner getPartner(String id) {
@@ -25,12 +25,18 @@ public class PartnerServices {
 	}
 
 	public Partner savePartner(Partner partner) {
+		partner.set_id(null);
 		return partnerRepositoryPort.save(partner);
+	}
 
+	public Partner updatePartner(Partner partner) {
+		Partner updated = null;
+		if (partner.get_id() != null || partner.get_id() != "")
+			updated = partnerRepositoryPort.save(partner);
+		return updated;
 	}
 
 	public boolean deletePartner(String id) {
 		return partnerRepositoryPort.deleteById(id);
-
 	}
 }

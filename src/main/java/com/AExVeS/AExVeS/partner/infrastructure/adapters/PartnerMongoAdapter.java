@@ -21,14 +21,13 @@ public class PartnerMongoAdapter implements PartnerRepositoryPort {
 	@Autowired
 	private PartnerEntityMapper partnerEntityMapper;
 
-	public List<Partner> findAllPartners() {
-		List<PartnerEntity> all = partnerMongoRepository.findAll();
-		List<Partner> allDomain = new ArrayList<>();
-		for (PartnerEntity pe : all) {
-			Partner mapped = partnerEntityMapper.toDomain(pe);
-			allDomain.add(mapped);
+	public List<Partner> findAll() {
+		List<PartnerEntity> partnerEntities = partnerMongoRepository.findAll();
+		List<Partner> partners = new ArrayList<>();
+		for (PartnerEntity pe : partnerEntities) {
+			partners.add(partnerEntityMapper.toDomain(pe));
 		}
-		return allDomain;
+		return partners;
 	}
 
 	public Partner findById(String id) {
@@ -36,7 +35,9 @@ public class PartnerMongoAdapter implements PartnerRepositoryPort {
 	}
 
 	public Partner save(Partner partner) {
-		return partnerEntityMapper.toDomain(partnerMongoRepository.save(partnerEntityMapper.toEntity(partner)));
+		PartnerEntity pe = partnerEntityMapper.toEntity(partner);
+		PartnerEntity saved = partnerMongoRepository.save(pe);
+		return partnerEntityMapper.toDomain(saved);
 	}
 
 	public boolean deleteById(String id) {

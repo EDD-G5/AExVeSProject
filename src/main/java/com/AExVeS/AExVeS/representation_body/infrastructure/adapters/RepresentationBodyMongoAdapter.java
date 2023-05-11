@@ -20,14 +20,12 @@ public class RepresentationBodyMongoAdapter implements RepresentationBodyReposit
 	@Autowired
 	private RepresentationBodyEntityMapper representationBodyEntityMapper;
 
-	public List<RepresentationBody> findAllPartners() {
-		List<RepresentationBodyEntity> all = representationBodyMongoRepository.findAll();
-		List<RepresentationBody> allDomain = new ArrayList<>();
-		for (RepresentationBodyEntity pe : all) {
-			RepresentationBody mapped = representationBodyEntityMapper.toDomain(pe);
-			allDomain.add(mapped);
-		}
-		return allDomain;
+	public List<RepresentationBody> findAll() {
+		List<RepresentationBodyEntity> representationBodyEntities = representationBodyMongoRepository.findAll();
+		List<RepresentationBody> representationBodies = new ArrayList<>();
+		for (RepresentationBodyEntity rbe : representationBodyEntities)
+			representationBodies.add(representationBodyEntityMapper.toDomain(rbe));
+		return representationBodies;
 	}
 
 	public RepresentationBody findById(String id) {

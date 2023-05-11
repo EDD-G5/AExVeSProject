@@ -17,7 +17,7 @@ public class RepresentationBodyServices {
 	private RepresentationBodyRepositoryPort representationBodyRepoPort;
 
 	public List<RepresentationBody> getAllRepresentationBodies() {
-		return representationBodyRepoPort.findAllPartners();
+		return representationBodyRepoPort.findAll();
 	}
 
 	public RepresentationBody getRepresentationBody(String id) {
@@ -25,8 +25,18 @@ public class RepresentationBodyServices {
 	}
 
 	public RepresentationBody saveRepresentationBody(RepresentationBody representationBody) {
-		return representationBodyRepoPort.save(representationBody);
+		RepresentationBody rb = null;
+		representationBody.set_id(null);
+		rb = representationBodyRepoPort.save(representationBody);
+		return rb;
+	}
 
+	public RepresentationBody updateRepresentationBody(RepresentationBody representationBody) {
+		RepresentationBody rb = null;
+		if (representationBodyRepoPort.findById(representationBody.get_id()) != null) {
+			rb = representationBodyRepoPort.save(representationBody);
+		}
+		return rb;
 	}
 
 	public boolean deleteRepresentationBodies(String id) {

@@ -11,7 +11,7 @@ import com.AExVeS.AExVeS.partner.domain.Models.Partner;
  */
 @Component
 public interface PartnerRepositoryPort {
-	public List<Partner> findAllPartners();
+	public List<Partner> findAll();
 
 	public Partner findById(String id);
 

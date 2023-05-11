@@ -6,10 +6,8 @@ import org.mapstruct.factory.Mappers;
 import com.AExVeS.AExVeS.representation_body.domain.RepresentationBody;
 import com.AExVeS.AExVeS.representation_body.infrastructure.rest.dto.RepresentationBodyDto;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface RepresentationBodyMapper {
-	RepresentationBodyMapper INSTANCE = Mappers.getMapper(RepresentationBodyMapper.class);
-
 	RepresentationBodyDto toDto(RepresentationBody partner);
 
 	RepresentationBody fromDto(RepresentationBodyDto partnerDto);

@@ -1,6 +1,5 @@
 package com.AExVeS.AExVeS.partner.infrastructure.rest.resources;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class PartnerResources {
 	@Autowired
 	private PartnerMapper partnerMapper;
 
-	@GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PartnerDto>> getAll() {
 		List<Partner> ps = partnerServices.getAllPartners();
 		List<PartnerDto> psdto = new ArrayList<>();
@@ -44,26 +43,29 @@ public class PartnerResources {
 		
 		return new ResponseEntity<>(psdto, HttpStatus.OK);
 	}
-	@GetMapping(value = "/partner/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PartnerDto> getUserById(@PathVariable String id) {
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<PartnerDto> getPartnerById(@PathVariable String id) {
 		PartnerDto dto = partnerMapper.toDto(partnerServices.getPartner(id));
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PartnerDto> saveUser(@RequestBody PartnerDto partnerDto) {
-		PartnerDto dto = partnerMapper.toDto(partnerServices.savePartner(partnerMapper.fromDto(partnerDto)));
-		return new ResponseEntity<>(dto, HttpStatus.CREATED);
+	@PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<PartnerDto> savePartner(@RequestBody PartnerDto partnerDto) {
+		Partner from = partnerMapper.fromDto(partnerDto);
+		Partner saved = partnerServices.savePartner(from);
+		System.out.println(saved);
+		return new ResponseEntity<>(partnerMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = "/partner", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PartnerDto> updateUser(@RequestBody PartnerDto partnerDto) {
-		PartnerDto partnerdto = partnerMapper.toDto(partnerServices.savePartner(partnerMapper.fromDto(partnerDto)));
-		return new ResponseEntity<>(partnerdto, HttpStatus.OK);
+	@PutMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<PartnerDto> updatePartner(@RequestBody PartnerDto partnerDto) {
+		Partner from = partnerMapper.fromDto(partnerDto);
+		Partner updated = partnerServices.updatePartner(from);
+		return new ResponseEntity<>(partnerMapper.toDto(updated), HttpStatus.OK);
 	}
 
-	@DeleteMapping(value = "/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Boolean> deleteUser(@PathVariable String id) {
+	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Boolean> deletePartner(@PathVariable String id) {
 		return new ResponseEntity<>(partnerServices.deletePartner(id), HttpStatus.OK);
 	}
 

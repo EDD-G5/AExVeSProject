@@ -1,16 +1,14 @@
 package com.AExVeS.AExVeS.partner.infrastructure.data.Entities;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 public class StudiesEntity {
-	public String study_level;
-	public String carrer_speciality;
-	public String educative_institution;
+	private String study_level;
+	private String carrer_speciality;
+	private String educative_institution;
 }

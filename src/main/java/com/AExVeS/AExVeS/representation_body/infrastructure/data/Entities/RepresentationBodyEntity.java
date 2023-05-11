@@ -6,19 +6,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Document("organos")
 public class RepresentationBodyEntity {
-	public String _id;
-	public String nombre;
-	public List<String> ids_representantes_socios;
-	public String fecha_toma_posesion;
+	private String _id;
+	private String nombre;
+	private List<String> ids_representantes_socios;
+	private String fecha_toma_posesion;
 }

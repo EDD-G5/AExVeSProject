@@ -1,0 +1,26 @@
+spring:
+  data:
+    mongodb:
+      database: BBDD_AExVeS
+      host: localhost
+      password: ''
+      port: 27017
+      username: root
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    enabled: true
+    path: /doc/swagger-ui.html
+  packagesToScan:
+    - com.AExVeS.AExVeS.partner_representatives.infrastructure.rest.resources
+    - com.AExVeS.AExVeS.representation_body.infrastructure.rest.resources
+    - com.AExVeS.AExVeS.partner.infrastructure.rest.resources
+  pathsToMatch: 
+    - /api/representation_bodies/**
+    - /api/partners/**
+    - /api/partner_representatives/**

@@ -7,10 +7,8 @@ import org.mapstruct.factory.Mappers;
 import com.AExVeS.AExVeS.partner.domain.Models.Partner;
 import com.AExVeS.AExVeS.partner.infrastructure.rest.dto.PartnerDto;
 
-@Mapper(componentModel = "spring", uses = { PersonalDataMapper.class, StudiesMapper.class })
+@Mapper(uses = { PersonalDataMapper.class, StudiesMapper.class })
 public interface PartnerMapper {
-	PartnerMapper INSTANCE = Mappers.getMapper(PartnerMapper.class);
-
 	@Mapping(source = "datos_personales.fecha_nacimiento", target = "fecha_nacimiento")
 	@Mapping(source = "datos_personales.genero", target = "genero")
 	@Mapping(source = "datos_personales.direccion", target = "direccion")

@@ -29,10 +29,4 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
 	public MongoClient mongoClient() {
 		return MongoClients.create("mongodb://" + host + ":" + port);
 	}
-
-	@Bean
-	MongoTemplate mongoTemplate() {
-		MongoTemplate mongoTemplate = new MongoTemplate(mongoClient(), db);
-		return mongoTemplate;
-	}
 }

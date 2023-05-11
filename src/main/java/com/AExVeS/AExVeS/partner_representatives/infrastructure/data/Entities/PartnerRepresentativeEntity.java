@@ -1,18 +1,16 @@
-package com.AExVeS.AExVeS.partner_representatives.domain;
+package com.AExVeS.AExVeS.partner_representatives.infrastructure.data.Entities;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
-@Document("representantes_socios")
-public class PartnerRepresentative {
-	@Id
+@Document("representantes")
+public class PartnerRepresentativeEntity {
 	private String _id;
 	private String nombre_completo;
 	private String id_socio_representado;

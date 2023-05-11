@@ -11,7 +11,7 @@ import com.AExVeS.AExVeS.representation_body.domain.RepresentationBody;
  */
 @Component
 public interface RepresentationBodyRepositoryPort {
-	public List<RepresentationBody> findAllPartners();
+	public List<RepresentationBody> findAll();
 
 	public RepresentationBody findById(String id);
 

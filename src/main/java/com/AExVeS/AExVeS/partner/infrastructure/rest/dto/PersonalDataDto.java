@@ -1,14 +1,10 @@
 package com.AExVeS.AExVeS.partner.infrastructure.rest.dto;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@Getter
-@Setter
-@Builder
+@RequiredArgsConstructor
 public class PersonalDataDto {
 	private String fecha_nacimiento;
 	private String genero;
