@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import com.AExVeS.AExVeS.partner.domain.Models.Partner;
 import com.AExVeS.AExVeS.partner.infrastructure.data.Entities.PartnerEntity;
 
-@Mapper(componentModel = "spring", uses = {PersonalDataEntityMapper.class, SudiesEntityMapper.class})
+@Mapper(uses = {PersonalDataEntityMapper.class, SudiesEntityMapper.class})
 public interface PartnerEntityMapper {
 	Partner toDomain(PartnerEntity partnerEntity);
 	PartnerEntity toEntity(Partner partner);

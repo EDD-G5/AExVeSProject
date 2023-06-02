@@ -2,10 +2,11 @@ package com.AExVeS.AExVeS;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = MongoAutoConfiguration.class)
 @EnableMongoRepositories("com.AExVeS.AExVeS")
 @ComponentScan(basePackages = { "com.AExVeS.AExVeS" })
 public class AExVeSApplication {

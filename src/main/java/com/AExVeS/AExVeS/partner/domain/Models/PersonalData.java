@@ -15,4 +15,4 @@ public class PersonalData {
     private String email;
     private String nacionalidad;
     private String otros_datos;
-}
+} 

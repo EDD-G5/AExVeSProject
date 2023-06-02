@@ -23,7 +23,7 @@ public class PartnerRepresentativeServices {
 	public PartnerRepresentative getPartnerRepresentative(String id) {
 		return partnerRepresentativeRepoPort.findById(id);
 	}
-
+     
 	public PartnerRepresentative savePartnerRepresentative(PartnerRepresentative partnerRepresentative) {
 		PartnerRepresentative pr = null;
 		partnerRepresentative.set_id(null);

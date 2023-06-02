@@ -31,25 +31,27 @@ public class PartnerResources {
 	@Autowired
 	private PartnerMapper partnerMapper;
 
-	@GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = { "/", "" }, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PartnerDto>> getAll() {
 		List<Partner> ps = partnerServices.getAllPartners();
 		List<PartnerDto> psdto = new ArrayList<>();
-		
-		for(Partner p : ps) {
+
+		for (Partner p : ps) {
 			PartnerDto dto = partnerMapper.toDto(p);
 			psdto.add(dto);
 		}
-		
+
 		return new ResponseEntity<>(psdto, HttpStatus.OK);
 	}
+
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerDto> getPartnerById(@PathVariable String id) {
 		PartnerDto dto = partnerMapper.toDto(partnerServices.getPartner(id));
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
-	@PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/",
+			"" }, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerDto> savePartner(@RequestBody PartnerDto partnerDto) {
 		Partner from = partnerMapper.fromDto(partnerDto);
 		Partner saved = partnerServices.savePartner(from);
@@ -57,7 +59,8 @@ public class PartnerResources {
 		return new ResponseEntity<>(partnerMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = { "/",
+			"" }, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerDto> updatePartner(@RequestBody PartnerDto partnerDto) {
 		Partner from = partnerMapper.fromDto(partnerDto);
 		Partner updated = partnerServices.updatePartner(from);

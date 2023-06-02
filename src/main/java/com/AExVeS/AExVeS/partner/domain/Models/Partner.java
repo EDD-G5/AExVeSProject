@@ -3,12 +3,16 @@ package com.AExVeS.AExVeS.partner.domain.Models;
 import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
-@AllArgsConstructor
+@ToString
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Partner {
 	@Id
 	private String _id;

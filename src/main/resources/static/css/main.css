@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&family=Newsreader:ital@0;1&display=swap");
+
+:root {
+	--my-font-family: "Mate SC", "Newsreader", serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100vh;
+	font-family: var(--my-font-family);
+}
+
+/* classes */
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.nav-link {
+	font-size: 1.1rem;
+}
+
+li.nav-item > div {
+	border: 5px solid "#000";
+}
+
+.nav-pills .nav-link.active {
+	background-color: transparent;
+	color: var(--bs-gray-900);
+	font-size: 1.1rem;
+}
+
+form > .row > div {
+	padding: 2em;
+}
+
+@media (min-width: 992px) {
+	#content-page,
+	#content-page div.w-100.center {
+		height: 100%;
+	}
+}
+
+@media (max-width: 992px) {
+	button[name="submit"] {
+		width: 75%;
+	}
+}
+
+@media (max-width: 692px) {
+	button[name="submit"] {
+		width: 90%;
+	}
+}

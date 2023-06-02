@@ -1,20 +1,20 @@
-package com.AExVeS.AExVeS.representation_body.domain;
+package com.AExVeS.AExVeS.representation_body.infrastructure.web.dto;
 
 import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class RepresentationBody {
-    private String _id;
-	@NotBlank
+public class RepresentationBodyWebDto {
+	
+    private String id;
+    @NotBlank
     private String nombre;
-	@NotEmpty
+    @NotBlank
     private List<String> ids_representantes_socios;
-	@NotBlank
+    @NotBlank
     private String fecha_toma_posesion;
 }

@@ -1,24 +1,30 @@
-package com.AExVeS.AExVeS.partner.infrastructure.data.Entities;
+package com.AExVeS.AExVeS.partner.infrastructure.web.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class PersonalDataEntity {
-	@NotBlank
+public class PersonalDataDto {
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String fecha_nacimiento;
-	@NotBlank
+
 	private String genero;
-	@NotBlank
+
 	private String direccion;
-	@NotBlank
+	
 	private String telefono;
+	
+	@Email
 	@NotBlank
 	private String email;
+	
 	@NotBlank
 	private String nacionalidad;
-	@NotBlank
+	
 	private String otros_datos;
 }

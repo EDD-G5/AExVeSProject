@@ -1,6 +1,5 @@
-package com.AExVeS.AExVeS.partner.infrastructure.data.Entities;
+package com.AExVeS.AExVeS.partner.infrastructure.web.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudiesEntity {
-	@NotBlank
+public class StudiesDto {
 	private String study_level;
-	@NotBlank
 	private String carrer_speciality;
-	@NotBlank
 	private String educative_institution;
+
 }

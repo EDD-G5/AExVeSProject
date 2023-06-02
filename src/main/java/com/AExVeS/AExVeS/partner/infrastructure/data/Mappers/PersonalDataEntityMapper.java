@@ -5,7 +5,7 @@ import org.mapstruct.Mapper;
 import com.AExVeS.AExVeS.partner.domain.Models.PersonalData;
 import com.AExVeS.AExVeS.partner.infrastructure.data.Entities.PersonalDataEntity;
 
-@Mapper(componentModel = "spring")
+@Mapper
 public interface PersonalDataEntityMapper {
 	PersonalData toDomain(PersonalDataEntity personalDataEntity);
 	

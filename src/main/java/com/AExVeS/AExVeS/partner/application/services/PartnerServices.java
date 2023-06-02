@@ -25,7 +25,7 @@ public class PartnerServices {
 	}
 
 	public Partner savePartner(Partner partner) {
-		partner.set_id(null);
+		partner.set_id(null); 
 		return partnerRepositoryPort.save(partner);
 	}
 
