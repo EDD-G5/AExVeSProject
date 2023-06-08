@@ -10,7 +10,7 @@ import com.AExVeS.AExVeS.partner.domain.Ports.out.PartnerRepositoryPort;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor 
 @Service
 public class PartnerServices {
 	@Autowired

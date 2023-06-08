@@ -35,26 +35,28 @@ public class PartnerWebController {
 		for (Partner partner : partners) {
 			dtos.add(partnerWebMapper.toDto(partner));
 		}
-		model.addAttribute("partners", partners);
+		model.addAttribute("partners", dtos);
 		return "datatemplates/partner";
-	}
+	}  
 
 	@GetMapping("/add")
 	public String goFormAddPartner(Model model) {
 		String[] genders = { "Man", "Woman", "Other", "Prefer not to say" };
-
-		model.addAttribute("formPartner", new PartnerDto());
-		model.addAttribute("isChecked", false);
+		if (!model.containsAttribute("formPartner")) {
+			model.addAttribute("formPartner", new PartnerDto());
+			model.addAttribute("isChecked", false);
+		}
 		model.addAttribute("genders", genders);
+
 		return "addForms/addPartner";
 	}
 
-	@PostMapping(value = { "/", "" })
+	@PostMapping("/add")
 	public String addPartner(@ModelAttribute("formPartner") @Valid PartnerDto partnerDto, BindingResult br,
 			Model model) {
-		if (br.hasErrors())
+		if (br.hasErrors()) {
 			return "addForms/addPartner";
-
+		}
 		final Partner partner = partnerWebMapper.fromDto(partnerDto);
 		final String id = partnerDto.getId();
 		final boolean existeId = id != null;
@@ -67,7 +69,7 @@ public class PartnerWebController {
 		return "redirect:/partners";
 	}
 
-    	@GetMapping("/update")
+	@GetMapping("/update")
 	public String updatePartner(@RequestParam("id") String id, Model model) {
 		Partner p = partnerServices.getPartner(id);
 		System.out.println(p.get_id());
@@ -81,4 +83,19 @@ public class PartnerWebController {
 		model.addAttribute("deleted", deleted);
 		return "redirect:/partners";
 	}
+
+//	private Map<String, Integer> readPhonePrefixes(){
+//		Map<String, Integer> records = new HashMap<>();
+//		try (BufferedReader br = new BufferedReader(new FileReader("country_phone_prefixes.csv"))) {
+//			String line;
+//			while ((line = br.readLine()) != null) {
+//				List<String> valuesList = Arrays.asList(line.split(", "));
+//				records.put(valuesList.get(0), Integer.parseInt(valuesList.get(valuesList.size() - 1)));
+//			}
+//			System.out.println(records);
+//			return records;
+//		} catch (IOException e) {
+//			throw new RuntimeException(e);
+//		}
+//	}
 }

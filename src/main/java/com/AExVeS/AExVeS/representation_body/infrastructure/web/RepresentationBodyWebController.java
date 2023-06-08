@@ -4,6 +4,9 @@ import com.AExVeS.AExVeS.representation_body.application.services.Representation
 import com.AExVeS.AExVeS.representation_body.domain.RepresentationBody;
 import com.AExVeS.AExVeS.representation_body.infrastructure.web.dto.RepresentationBodyWebDto;
 import com.AExVeS.AExVeS.representation_body.infrastructure.web.mappers.RepresentationBodyWebMapper;
+
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,10 +41,12 @@ public class RepresentationBodyWebController {
         return "addForms/addRepresentationBodies";
     }
 
-    @PostMapping(value = {"/", ""})
-    public String addPartner(@ModelAttribute("formBody") RepresentationBodyWebDto representationBodyWebDto, BindingResult br,
+    @PostMapping("/add")
+    public String addPartner(@ModelAttribute("formBody") @Valid RepresentationBodyWebDto representationBodyWebDto, BindingResult br,
                              Model model) {
-		if (br.hasErrors()) return "addForms/addRepresentationBody";
+		if (br.hasErrors()) {
+			return "addForms/addRepresentationBodies";
+		}
 
 		final RepresentationBody rb = representationBodyWebMapper.fromDto(representationBodyWebDto);
 		final String id = rb.get_id();

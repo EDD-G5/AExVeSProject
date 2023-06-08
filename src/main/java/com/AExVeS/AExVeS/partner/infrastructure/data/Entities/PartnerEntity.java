@@ -1,8 +1,9 @@
 package com.AExVeS.AExVeS.partner.infrastructure.data.Entities;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -15,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @Document("socios")
 public class PartnerEntity {
-	@Id
+	@MongoId(FieldType.OBJECT_ID)
 	@NotBlank
 	private String _id;
 	

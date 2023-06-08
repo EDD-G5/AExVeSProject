@@ -41,19 +41,19 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col"># of represented partner</th>
-                                    <th scope="col">full name</th>
-                                    <th scope="col">phone number</th>
-                                    <th scope="col">email</th>
+                                    <th scope="col">Representative Name</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Name of Represented partner</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="representative, rowStatus: ${representatives}" scope="row">
                                     <td th:text="${rowStatus.index + 1}" class="text-truncate" />
-                                    <td th:text="${representative.id_socio_representado}" />
                                     <td th:text="${representative.nombre_completo}" />
                                     <td th:text="${representative.telefono}" />
                                     <td th:text="${representative.email}" />
+                                    <td th:text="${representative.id_socio_representado}" />
                                     <td>
                                         <a type="button" class="btn btn-outline-info mr-1" th:href="@{'/partner_representatives/update?id=' + ${representative.id}}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

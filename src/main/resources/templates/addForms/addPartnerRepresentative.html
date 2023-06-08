@@ -16,23 +16,53 @@
             <div th:replace="~{/header::header}"></div>
         </div>
         <div class="h-100 d-flex justify-content-center align-items-center">
-            <form id="partner-form" class="mb-3 row justify-content-between" action="#" th:action="@{/partner_representatives}" method="post" th:object="${formRepresentative}">
-                <div class="col visually-hidden">
-                    <input type="hidden" th:field="*{id}" name="id" placeholder="Id" class="form-control" />
+            <form id="partner-form" class="mb-3 row justify-content-between bg-light p-4 border rounded" action="#" th:action="@{/partner_representatives/add}" method="post" th:object="${formRepresentative}">
+                <h2 class="display-5 text-center">Partner Representative</h2>
+                <p class="mb-5 text-center">Introduce the data for the partner representative</p>
+                <div class="w-50 mx-auto">
+                    <div class="col visually-hidden">
+                        <input type="hidden" th:field="*{id}" name="id" placeholder="Id" class="form-control" />
+                    </div>
+                    <div class="col-12">
+                        <div class="has-validation">
+                            <label for="full-name" class="form-label">Full Name</label>
+                            <input type="text" th:field="*{nombre_completo}" name="fullname" placeholder="Full Name" class="form-control" id="full-name" th:classappend="${not #lists.isEmpty(#fields.errors('nombre_completo'))} ? is-invalid" />
+                            <div class="invalid-feedback">
+                                <p th:if="${#fields.hasErrors('nombre_completo')}" th:errors="*{nombre_completo}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="has-validation">
+                            <label for="id-socio-representado" class="form-label">Represented Partner Id</label>
+                            <input type="text" th:field="*{id_socio_representado}" name="components" placeholder="Represented Partner Id" class="form-control" id="id-socio-representado" th:classappend="${not #lists.isEmpty(#fields.errors('id_socio_representado'))} ? is-invalid" />
+                            <div class="invalid-feedback">
+                                <p th:if="${#fields.hasErrors('id_socio_representado')}" th:errors="*{id_socio_representado}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="has-validation">
+                            <label for="phone" class="form-label">Phone number</label>
+                            <input type="text" th:field="*{telefono}" name="telephoone" placeholder="Phone number" class="form-control" id="phone" th:classappend="${not #lists.isEmpty(#fields.errors('telefono'))} ? is-invalid" />
+                            <div class="invalid-feedback">
+                                <p th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="has-validation">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" th:field="*{email}" name="email" placeholder="Email" class="form-control" id="email" th:classappend="${not #lists.isEmpty(#fields.errors('email'))} ? is-invalid" />
+                            <div class="invalid-feedback">
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center px-0 py-5">
+                        <button type="submit" name="submit" class="btn btn-primary mx-auto">Save</button>
+                    </div>
                 </div>
-                <div class="col">
-                    <input type="text" th:field="*{nombre_completo}" name="fullname" placeholder="Full Name" class="form-control" />
-                </div>
-                <div class="col">
-                    <input type="text" th:field="*{id_socio_representado}" name="components" placeholder="Components" class="form-control" />
-                </div>
-                <div class="col">
-                    <input type="text" th:field="*{telefono}" name="telephoone" placeholder="Telephone" class="form-control" />
-                </div>
-                <div class="col">
-                    <input type="text" th:field="*{email}" name="email" placeholder="Email" class="form-control" />
-                </div>
-                <button type="submit" name="submit" class="btn btn-primary col-1">Save</button>
             </form>
         </div>
         <div class="row">
