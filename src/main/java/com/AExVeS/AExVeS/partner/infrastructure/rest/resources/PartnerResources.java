@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +23,13 @@ import com.AExVeS.AExVeS.partner.infrastructure.rest.mappers.PartnerMapper;
 
 @RestController
 @RequestMapping("/api/partners")
-@ComponentScan("com.AExVeS.AExVeS")
 public class PartnerResources {
 	@Autowired
 	private PartnerServices partnerServices;
 	@Autowired
 	private PartnerMapper partnerMapper;
 
-	@GetMapping(value = { "/", "" }, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PartnerDto>> getAll() {
 		List<Partner> ps = partnerServices.getAllPartners();
 		List<PartnerDto> psdto = new ArrayList<>();
@@ -50,17 +48,14 @@ public class PartnerResources {
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
-	@PostMapping(value = { "/",
-			"" }, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerDto> savePartner(@RequestBody PartnerDto partnerDto) {
 		Partner from = partnerMapper.fromDto(partnerDto);
 		Partner saved = partnerServices.savePartner(from);
-		System.out.println(saved);
 		return new ResponseEntity<>(partnerMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = { "/",
-			"" }, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerDto> updatePartner(@RequestBody PartnerDto partnerDto) {
 		Partner from = partnerMapper.fromDto(partnerDto);
 		Partner updated = partnerServices.updatePartner(from);

@@ -1,0 +1,14 @@
+*{
+	background-color: red;
+}
+
+h2.title{
+	color: blue;
+}
+div.swagger-ui{
+	background-color: red;
+}
+
+span.url{ 
+	font-size: 20px;
+}

@@ -29,9 +29,10 @@ public class PartnerRepresentativeResources {
 	@Autowired
 	private PartnerRepresentativeMapper partnerRepresentativeMapper;
 
-	@GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<PartnerRepresentativeDto>> getAll() {
-		List<PartnerRepresentative> partnerRepresentatives = partnerRepresentativesServices.getAllPartnerRepresentatives();
+		List<PartnerRepresentative> partnerRepresentatives = partnerRepresentativesServices
+				.getAllPartnerRepresentatives();
 		List<PartnerRepresentativeDto> partnerRepresentativesdto = new ArrayList<>();
 		for (PartnerRepresentative p : partnerRepresentatives)
 			partnerRepresentativesdto.add(partnerRepresentativeMapper.toDto(p));
@@ -45,7 +46,8 @@ public class PartnerRepresentativeResources {
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
-	@PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/",
+			"" }, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerRepresentativeDto> savePartnerRepresentative(
 			@RequestBody PartnerRepresentativeDto partnerReprDto) {
 		PartnerRepresentative from = partnerRepresentativeMapper.fromDto(partnerReprDto);
@@ -53,7 +55,7 @@ public class PartnerRepresentativeResources {
 		return new ResponseEntity<>(partnerRepresentativeMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PartnerRepresentativeDto> updatePartnerRepresentative(
 			@RequestBody PartnerRepresentativeDto partnerReprDto) {
 		PartnerRepresentative from = partnerRepresentativeMapper.fromDto(partnerReprDto);

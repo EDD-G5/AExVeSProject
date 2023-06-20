@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +23,13 @@ import com.AExVeS.AExVeS.representation_body.infrastructure.rest.mappers.Represe
 
 @RestController
 @RequestMapping("/api/representation_bodies")
-@ComponentScan("com.AExVeS.AExVeS.representation_bodies")
 public class RepresentationBodyResources {
 	@Autowired
 	private RepresentationBodyServices representationBodiesServices;
 	@Autowired
 	private RepresentationBodyMapper representationBodyMapper;
 
-	@GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<RepresentationBodyDto>> getAll() {
 		List<RepresentationBody> representation_bodies = representationBodiesServices.getAllRepresentationBodies();
 		List<RepresentationBodyDto> representation_bodiesdto = new ArrayList<>();
@@ -46,15 +44,17 @@ public class RepresentationBodyResources {
 		return new ResponseEntity<>(representationBodyMapper.toDto(found), HttpStatus.OK);
 	}
 
-	@PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RepresentationBodyDto> saveRepresentationBody(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
+	@PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RepresentationBodyDto> saveRepresentationBody(
+			@RequestBody RepresentationBodyDto RepresentationBodyDto) {
 		RepresentationBody from = representationBodyMapper.fromDto(RepresentationBodyDto);
 		RepresentationBody saved = representationBodiesServices.saveRepresentationBody(from);
 		return new ResponseEntity<>(representationBodyMapper.toDto(saved), HttpStatus.CREATED);
 	}
 
-	@PutMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RepresentationBodyDto> updateRepresentationBody(@RequestBody RepresentationBodyDto RepresentationBodyDto) {
+	@PutMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<RepresentationBodyDto> updateRepresentationBody(
+			@RequestBody RepresentationBodyDto RepresentationBodyDto) {
 		RepresentationBody from = representationBodyMapper.fromDto(RepresentationBodyDto);
 		RepresentationBody updated = representationBodiesServices.updateRepresentationBody(from);
 		return new ResponseEntity<>(representationBodyMapper.toDto(updated), HttpStatus.OK);

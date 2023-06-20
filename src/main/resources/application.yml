@@ -1,3 +1,12 @@
+server:
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+    include-message: always
+    include-exception: true
+    include-stacktrace: always
+    include-binding-errors: always
 spring:
   data:
     mongodb:
@@ -8,19 +17,11 @@ spring:
       username: root
   mvc:
     pathmatch:
-      matching-strategy: ANT_PATH_MATCHER
+      matching-strategy: ant-path-matcher
+  web:
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
 springdoc:
-  api-docs:
-    enabled: true
-    path: /api-docs
-  swagger-ui:
-    enabled: true
-    path: /doc/swagger-ui.html
-  packagesToScan:
-    - com.AExVeS.AExVeS.partner_representatives.infrastructure.rest.resources
-    - com.AExVeS.AExVeS.representation_body.infrastructure.rest.resources
-    - com.AExVeS.AExVeS.partner.infrastructure.rest.resources
-  pathsToMatch: 
-    - /api/representation_bodies/**
-    - /api/partners/**
-    - /api/partner_representatives/**
+    swagger-ui:
+      operationsSorter: method
+      tagsSorter: alpha
